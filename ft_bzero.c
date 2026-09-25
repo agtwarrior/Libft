@@ -6,7 +6,7 @@
 /*   By: david <davguerr@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 16:01:03 by david             #+#    #+#             */
-/*   Updated: 2026/09/24 17:17:08 by david            ###   ########.fr       */
+/*   Updated: 2026/09/25 17:30:17 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	ft_bzero(void *s, size_t n)
 	unsigned char	*p;
 
 	p = s;
+	i = 0;
 	while (i < n)
 	{
 		p[i] = 0;
+		i++;
 	}
 }

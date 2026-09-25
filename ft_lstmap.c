@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <davguerr@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/25 12:25:47 by david             #+#    #+#             */
-/*   Updated: 2026/09/25 12:47:50 by david            ###   ########.fr       */
+/*   Created: 2026/09/25 16:42:18 by david             #+#    #+#             */
+/*   Updated: 2026/09/25 17:02:14 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char			*str;
-	unsigned int	i;
-	size_t			len;
+	t_list	*first;
+	t_list	*ilist;
+	void	*c;
 
-	if (!s || !f)
+	if (!lst || !f || !del)
 		return (NULL);
-	len = ft_strlen(s);
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	first = NULL;
+	while (lst)
 	{
-		str[i] = f(i, s[i]);
-		i++;
+		c = f(lst->content);
+		ilist = ft_lstnew(c);
+		if (!ilist)
+		{
+			del (c);
+			ft_lstclear(&first, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&first, ilist);
+		lst = lst->next;
 	}
-	str[i] = '\0';
-	return (str);
+	return (first);
 }

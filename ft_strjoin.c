@@ -6,7 +6,7 @@
 /*   By: david <davguerr@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 17:59:23 by david             #+#    #+#             */
-/*   Updated: 2026/09/24 18:20:35 by david            ###   ########.fr       */
+/*   Updated: 2026/09/25 17:32:47 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str = malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!str)
 		return (NULL);
-	str = s1;
+	str = (char *) s1;
 	ft_strlcpy(str, s1, s1_len + 1);
 	ft_strlcat(str, s2, s2_len + 1);
 	return (str);
