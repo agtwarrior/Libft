@@ -6,7 +6,7 @@
 /*   By: david <davguerr@student.42madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 12:59:36 by david             #+#    #+#             */
-/*   Updated: 2026/09/24 17:27:28 by david            ###   ########.fr       */
+/*   Updated: 2026/09/28 15:11:35 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 		lensrc++;
 	if (destsize == 0)
 		return (lensrc);
-	while (src[i] || (i < destsize - 1))
+	while (src[i] && (i < destsize - 1))
 	{
 		dest[i] = src[i];
 		i++;
